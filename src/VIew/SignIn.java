@@ -33,6 +33,7 @@ public class SignIn extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -54,10 +55,11 @@ public class SignIn extends JFrame {
 	 * Create the frame.
 	 */
 	public SignIn() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 849, 481);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -71,63 +73,75 @@ public class SignIn extends JFrame {
 		JLabel lblAddress = new JLabel("Address");
 		lblAddress.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAddress.setFont(new Font("Arial", Font.PLAIN, 24));
-		lblAddress.setBounds(82, 80, 199, 52);
+		lblAddress.setBounds(42, 132, 199, 52);
 		contentPane.add(lblAddress);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Number");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Arial", Font.PLAIN, 24));
-		lblNewLabel_1_1.setBounds(82, 132, 199, 52);
+		lblNewLabel_1_1.setBounds(42, 191, 199, 52);
 		contentPane.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Message");
 		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_2.setFont(new Font("Arial", Font.PLAIN, 24));
-		lblNewLabel_1_2.setBounds(82, 301, 199, 52);
+		lblNewLabel_1_2.setBounds(42, 301, 168, 52);
 		contentPane.add(lblNewLabel_1_2);
-		
+
 		textField = new JTextField();
-		textField.setBounds(291, 87, 314, 46);
+		textField.setBounds(205, 139, 387, 46);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(291, 139, 314, 46);
+		textField_1.setBounds(205, 198, 387, 46);
 		contentPane.add(textField_1);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Pizza");
 		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1.setFont(new Font("Arial", Font.PLAIN, 24));
-		lblNewLabel_1_1_1.setBounds(82, 182, 199, 52);
+		lblNewLabel_1_1_1.setBounds(42, 246, 199, 52);
 		contentPane.add(lblNewLabel_1_1_1);
 		
-		JLabel lblNewLabel_1_1_2 = new JLabel("Border");
-		lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1_2.setFont(new Font("Arial", Font.PLAIN, 24));
-		lblNewLabel_1_1_2.setBounds(82, 238, 199, 52);
-		contentPane.add(lblNewLabel_1_1_2);
-		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("True");
-		rdbtnNewRadioButton.setBackground(Color.WHITE);
-		rdbtnNewRadioButton.setBounds(291, 257, 109, 23);
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Com borda");
+		rdbtnNewRadioButton.setBackground(Color.LIGHT_GRAY);
+		rdbtnNewRadioButton.setBounds(379, 265, 108, 23);
 		contentPane.add(rdbtnNewRadioButton);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("False");
-		rdbtnNewRadioButton_1.setBackground(Color.WHITE);
-		rdbtnNewRadioButton_1.setBounds(412, 257, 109, 23);
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Sem borda");
+		rdbtnNewRadioButton_1.setBackground(Color.LIGHT_GRAY);
+		rdbtnNewRadioButton_1.setBounds(489, 265, 108, 23);
 		contentPane.add(rdbtnNewRadioButton_1);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setBackground(Color.WHITE);
 		textArea.setLineWrap(true);
 		textArea.setRows(8);
-		textArea.setBounds(291, 319, 314, 101);
+		textArea.setBounds(205, 319, 387, 101);
 		contentPane.add(textArea);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<Object> comboBox = new JComboBox<Object>();
 		comboBox.setBackground(Color.WHITE);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Selecione....", "Massa", "Capim", "Rato", "Quatro"}));
-		comboBox.setBounds(291, 196, 314, 39);
+		comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"Selecione....", "Massa", "Capim", "Rato", "Quatro"}));
+		comboBox.setBounds(205, 255, 168, 35);
 		contentPane.add(comboBox);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Admin\\Documents\\Pizzaria\\src\\VIew\\rato.png"));
+		lblNewLabel_1.setBounds(62, -78, 833, 442);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblAddress_1 = new JLabel("Client");
+		lblAddress_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAddress_1.setFont(new Font("Arial", Font.PLAIN, 24));
+		lblAddress_1.setBounds(42, 76, 199, 52);
+		contentPane.add(lblAddress_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(205, 82, 387, 46);
+		contentPane.add(textField_2);
 	}
 }
