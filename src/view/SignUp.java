@@ -15,6 +15,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class SignUp extends JFrame {
 
@@ -25,7 +27,7 @@ public class SignUp extends JFrame {
 	private JPanel contentPane;
 	private JPasswordField pwdField;
 	private JTextField nameField;
-	private String pwd = "usuario", name = "senha";
+	private String pwd = "pwd", name = "adm";
 	/**
 	 * Launch the application.
 	 */
@@ -40,6 +42,48 @@ public class SignUp extends JFrame {
 				}
 			}
 		});
+	}
+	
+	public boolean clearFields(JTextField nameField, JPasswordField pwdField) {
+		nameField.setText("");
+		pwdField.setText("");
+		pwdField.setEditable(true);
+		nameField.requestFocus();
+		
+		return true;
+	}
+	
+	public boolean isNameCorrect(JTextField nameField) {
+		if (nameField.getText().equals(name)) {
+			return true;
+		} 
+		return false;
+	}
+	
+	public String getPassword() {
+		return String.valueOf(pwdField.getPassword());
+	}
+	
+	public boolean isPasswordCorrect(JPasswordField pwdField) {		
+		if (getPassword().equals(pwd)) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean validateCredentials(JTextField nameField, JPasswordField pwdField) {
+		if (isNameCorrect(nameField) && isPasswordCorrect(pwdField)) {
+			JOptionPane.showMessageDialog(null, "Big ratão approves, now give ya money, bitch.");
+		} else if (isNameCorrect(nameField) && !isPasswordCorrect(pwdField)) {
+			JOptionPane.showMessageDialog(null, "Senha errada, doidão");
+		}else if (nameField == null && pwdField == null) {
+			JOptionPane.showMessageDialog(null, "Vai digitar nada mesmo não, tio?");
+		} else {
+			JOptionPane.showMessageDialog(null, "Errou tudo bixão, quer ajuda ai?");
+		} 
+		
+		return true;
 	}
 
 	/**
@@ -68,6 +112,18 @@ public class SignUp extends JFrame {
 		contentPane.add(pwdLabel);
 
 		pwdField = new JPasswordField();
+		pwdField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {				
+				if (getPassword().length() == 3 && (int) e.getKeyChar() != 8) {
+				  pwdField.setEditable(false);
+				} 
+				
+				if ((int) e.getKeyChar() == 8) {
+					pwdField.setEditable(true);
+				}
+			}
+		});
 		pwdField.setBounds(205, 258, 387, 46);
 		contentPane.add(pwdField);
 		pwdField.setColumns(10);
@@ -99,27 +155,5 @@ public class SignUp extends JFrame {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(404, 341, 192, 52);
 		contentPane.add(btnCancel);
-	}
-	
-	public boolean clearFields(JTextField nameField, JPasswordField pwdField) {
-		nameField.setText("");
-		pwdField.setText("");
-		nameField.requestFocus();
-		
-		return true;
-	}
-	
-	public boolean validateCredentials(JTextField nameField, JPasswordField pwdField) {
-		if (nameField.getText().equals(name) && String.valueOf(pwdField.getPassword()).equals(pwd)) {
-			JOptionPane.showMessageDialog(null, "Big ratão approves, now give ya money, bitch.");
-		} else if (nameField.getText().equals(name) && !String.valueOf(pwdField.getPassword()).equals(pwd)) {
-			JOptionPane.showMessageDialog(null, "Senha errada, doidão");
-		}else if (nameField.getText().equals("") && String.valueOf(pwdField.getPassword()).equals("")) {
-			JOptionPane.showMessageDialog(null, "Vai digitar nada mesmo não, tio?");
-		} else {
-			JOptionPane.showMessageDialog(null, "Errou tudo bixão, quer ajuda ai?");
-		} 
-		
-		return true;
 	}
 }
